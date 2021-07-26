@@ -1,4 +1,8 @@
-"""Run inference with a YOLOv5 model on images, videos, directories, streams
+"""
+© Copyright 2021
+By: Hardefa Rizky Putu Rogonondo.
+
+Run inference with a YOLOv5 model on images, videos, directories, streams
 
 Usage:
     $ python path/to/detect.py --source path/to/img.jpg --weights yolov5s.pt --img 640
@@ -147,6 +151,12 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                         c = int(cls)  # integer class
                         label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                         plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_thickness=line_thickness)
+                        # ngitung panjang
+                        y1 = int(xyxy[1].item())
+                        y2 = int(xyxy[3].item())
+                        dowo = y2 - y1
+                        print(f"Carapace Lenght: {dowo} mm")
+                        # print(f'{dowo} mm')
                         if save_crop:
                             save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
 
@@ -157,6 +167,9 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
             if view_img:
                 cv2.imshow(str(p), im0)
                 cv2.waitKey(1)  # 1 millisecond
+            
+            cv2.imshow(str(p), im0)
+            cv2.waitKey(1)
 
             # Save results (image with detections)
             if save_img:
