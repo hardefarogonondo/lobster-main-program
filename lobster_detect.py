@@ -3,7 +3,8 @@ import cv2
 import numpy as np
 import time
 
-carapace = [270, 320, 270, 268, 268, 294, 325, 322, 296, 254, 286, 289, 304, 297, 303, 268, 282, 272, 281, 307]
+carapace_pre_processed = [270, 320, 270, 268, 268, 294, 325, 322, 296, 254, 286, 289, 304, 297, 303, 268, 282, 272, 281, 307]
+carapace_processed = [x * 0.425 for x in carapace_pre_processed]
 
 # Create a VideoCapture object and read from input file
 cap = cv2.VideoCapture('runs/detect/exp2/project_done.avi')
@@ -14,13 +15,13 @@ if (cap.isOpened()== False):
 
 # Read until video is completed
 while(cap.isOpened()):
-    for x in range(len(carapace)):
+    for x in range(len(carapace_processed)):
         # Capture frame-by-frame
         ret, frame = cap.read()
         if ret == True:
             # Display the resulting frame
             cv2.imshow('Frame', frame)
-            print("Detected Carapace Lenght: ", carapace[x], "mm")
+            print("Detected Carapace Lenght: ", carapace_processed[x], "mm")
             cv2.waitKey(500)
             # Press Q on keyboard to exit
             if cv2.waitKey(25) & 0xFF == ord('q'):
