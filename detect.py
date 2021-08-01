@@ -158,7 +158,6 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                         dowo_processed = dowo * 0.425
                         print("\n")
                         print(f"Carapace Lenght: {dowo_processed} mm")
-                        print("\n")
                         # print(f'{dowo} mm')
                         if save_crop:
                             save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
