@@ -155,6 +155,7 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                         y1 = int(xyxy[1].item())
                         y2 = int(xyxy[3].item())
                         dowo = y2 - y1
+                        dowo_processed = dowo * 0.425
                         print(f"Carapace Lenght: {dowo} mm")
                         # print(f'{dowo} mm')
                         if save_crop:
