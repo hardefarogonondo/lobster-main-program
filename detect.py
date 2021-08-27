@@ -157,6 +157,7 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                         dowo = y2 - y1
                         dowo_processed = dowo * 0.425
                         abot = 0.000483 * dowo_processed ** 3
+                        abot_new = 0.0025 * dowo_processed ** 2.7542
                         print("\n")
                         print(f"Carapace Lenght: {dowo_processed} mm")
                         print(f"Lobster Weight: {abot} gr")
