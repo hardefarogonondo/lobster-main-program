@@ -27,6 +27,8 @@ from utils.general import check_img_size, check_requirements, check_imshow, colo
 from utils.plots import colors, plot_one_box
 from utils.torch_utils import select_device, load_classifier, time_sync
 
+# Formula Options Flag
+flag = 1
 
 @torch.no_grad()
 def run(weights='yolov5s.pt',  # model.pt path(s)
@@ -156,12 +158,16 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                         y2 = int(xyxy[3].item())
                         dowo = y2 - y1
                         dowo_processed = dowo * 0.425
-                        abot = 0.000483 * dowo_processed ** 3
-                        abot_new = 0.0025 * dowo_processed ** 2.7542
+                        if flag == 1:
+                            abot = 0.000483 * dowo_processed ** 3
+                        elif flag == 2:
+                            abot = 0.0025 * dowo_processed ** 2.7542
+                        else:
+                            print("Please choose the provided formula and start all over again")
+                            break
                         print("\n")
                         print(f"Carapace Lenght: {dowo_processed} mm")
                         print(f"Lobster Weight: {abot} gr")
-                        # print(f'{dowo} mm')
                         if save_crop:
                             save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
 
@@ -238,6 +244,10 @@ def parse_opt():
 def main(opt):
     print(colorstr('detect: ') + ', '.join(f'{k}={v}' for k, v in vars(opt).items()))
     # check_requirements(exclude=('tensorboard', 'thop'))
+    print("Which formula do you want to use to measure the lobster weight?")
+    print("1 => W = 0.000483L^3")
+    print("2 => W = 0.0025L^2.7542")
+    flag = int(input("Formula = "))
     run(**vars(opt))
 
 
