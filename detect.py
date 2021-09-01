@@ -165,9 +165,10 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                         else:
                             print("Please choose the provided formula and start all over again")
                             break
-                        print("\n")
-                        print(f"Carapace Lenght: {dowo_processed} mm")
-                        print(f"Lobster Weight: {abot} gr")
+                        # print("\n")
+                        # print(f"Carapace Lenght: {dowo_processed} mm")
+                        # print(f"Lobster Weight: {abot} gr")
+                        # label = None if hide_labels else (f'{names[c]} {"L: ", dowo_processed} {"W: ", abot}')
                         if save_crop:
                             save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
 
