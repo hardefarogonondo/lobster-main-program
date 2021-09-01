@@ -246,7 +246,7 @@ def main(opt):
     print("1 => W = 0.000483L^3")
     print("2 => W = 0.0025L^2.7542")
     flag = int(input("Formula = "))
-    if flag == (1, 2):
+    if flag in (1, 2):
         pass
     else:
         print("Please choose the provided formula and start all over again")
