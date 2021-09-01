@@ -160,14 +160,11 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                             abot = 0.000483 * dowo_processed ** 3
                         elif flag == 2:
                             abot = 0.0025 * dowo_processed ** 2.7542
-                        else:
-                            print("Please choose the provided formula and start all over again")
-                            break
                         # print("\n")
                         # print(f"Carapace Lenght: {dowo_processed} mm")
                         # print(f"Lobster Weight: {abot} gr")
                         # label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                        label = None if hide_labels else (f'{names[c]} {"L: ", dowo_processed} {"W: ", abot}')
+                        label = None if hide_labels else (f'{names[c]} {f"L: {dowo_processed} mm"} {f"W: {abot} gr"}')
                         plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_thickness=line_thickness)
                         if save_crop:
                             save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
@@ -249,6 +246,11 @@ def main(opt):
     print("1 => W = 0.000483L^3")
     print("2 => W = 0.0025L^2.7542")
     flag = int(input("Formula = "))
+    if flag == (1 or 2):
+        pass
+    else:
+        print("Please choose the provided formula and start all over again")
+        exit()
     run(**vars(opt))
 
 
