@@ -180,8 +180,8 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                 cv2.imshow(str(p), im0)
                 cv2.waitKey(1)  # 1 millisecond
             
-            cv2.imshow(str(p), im0)
-            cv2.waitKey(1)
+            # cv2.imshow(str(p), im0)
+            # cv2.waitKey(1)
 
             # Save results (image with detections)
             if save_img:
