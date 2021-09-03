@@ -51,7 +51,7 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
         project='runs/detect',  # save results to project/name
         name='exp',  # save results to project/name
         exist_ok=False,  # existing project/name ok, do not increment
-        line_thickness=3,  # bounding box thickness (pixels)
+        line_thickness=1,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
         hide_conf=False,  # hide confidences
         half=False,  # use FP16 half-precision inference
@@ -155,7 +155,7 @@ def run(weights='yolov5s.pt',  # model.pt path(s)
                         y1 = int(xyxy[1].item())
                         y2 = int(xyxy[3].item())
                         dowo = y2 - y1
-                        dowo_processed = dowo * 0.425
+                        dowo_processed = dowo / 2.89
                         if flag == 1:
                             abot = 0.000483 * dowo_processed ** 3
                         elif flag == 2:
